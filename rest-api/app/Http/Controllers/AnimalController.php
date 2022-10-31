@@ -10,7 +10,8 @@ class AnimalController extends Controller
     public function index()
     {
         echo "Menampilkan data animals" . "<br>";
-        foreach ($this->animals as $animal) {
+        foreach ($this->animals as $animal) 
+        {
             echo "->" . $animal . "</br>";
         }
     }
