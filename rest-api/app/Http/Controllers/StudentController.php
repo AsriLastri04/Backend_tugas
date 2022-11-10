@@ -62,4 +62,60 @@ class StudentController extends Controller
 
         return response()->json($result);
     }
+    //mendapatkan detail resource 
+    // membuat method show
+    public function show($id)
+    {
+        # cari data student
+        $student = Student::find($id);
+
+        if($student)
+        {
+            $data = [
+                'message' => 'Get detail student',
+                'data ' => $student,
+            ];
+            // mengembalikan data json status code 200\
+            return response()->json($data,200);
+        } else{
+            $data = [
+                'message' => 'Student not found',
+            ];
+            //mengembalikan data json 
+            return response()->json($data,404);
+        }
+       
+    }
+    //mengupdate 
+
+    public function mengupdate(  Request $request, $id)
+    {
+
+    //cari data student yg di update
+    $student = Student::find($id);
+    if ($student)
+    {
+    $input =[
+        'nama '=> $request->nama ?? $student->nama,
+        'nim ' => $request->nim ?? $student->nim,
+        'email '=> $request->email ?? $student->email,
+        'jurusan' => $request->jurusan ?? $student->jurusan,
+
+    ];
+    // update data
+    $student->mengupdate($input);
+    $data = [
+        'message' => 'Resource student update',
+        'data' => $student,
+    ];
+//mengirimkan 
+return response()->json($data,200);
+    }else {
+        $data = [
+            'message' => 'Student not found',
+        ];
+        //mengembalikan data json 
+        return response()->json($data,404);
+    }
+}
 }
