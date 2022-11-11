@@ -62,6 +62,8 @@ class StudentController extends Controller
 
         return response()->json($result);
     }
+
+    //tugas 6
     //mendapatkan detail resource 
     // membuat method show
     public function show($id)
@@ -118,4 +120,29 @@ return response()->json($data,200);
         return response()->json($data,404);
     }
 }
+    public function delete($id)
+    {
+        # cari data student yg ingin dihapus
+        $student = Student::find($id);
+
+        if ($student) {
+            # hapus data student
+            $student->delete();
+
+            $data = [
+                'message' => 'Student is deleted',
+            ];
+
+            # mengembalikan data json status code 200
+            return response()->json($data, 200);
+        } else {
+            $data = [
+                'message' => 'Student not found',
+            ];
+
+            # mengembalikan data json status code 404
+            return response()->json($data, 404);
+        }
+    }
 }
+

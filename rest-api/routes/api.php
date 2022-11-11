@@ -32,7 +32,7 @@ Route::put('/animals/{id}',  [AnimalController::class, 'update'] );
 //method delete
 Route::delete('/animals/{id}',  [AnimalController::class, 'destroy'] );
 
-
+# get all resource students
 Route::get('/students' , [StudentController::class, 'index']);
 
 Route::post('/students' , [StudentController::class, 'store']);
@@ -40,8 +40,11 @@ Route::post('/students' , [StudentController::class, 'store']);
 Route::put('/students/{id}' , [StudentController::class, 'update']);
 
 Route::delete('/students/{id}' , [StudentController::class, 'destroy']);
-//
+//pekan 6
 Route::get('/students/{id}', [StudentController::class, 'show']);
 // memperbarui resource student
 //method put
 Route::put('/students/{id}', [StudentController::class, 'update']);
+# menghapus resource student
+# method delete
+Route::delete('/students/{id}', [StudentController::class, 'delete']);
