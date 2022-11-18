@@ -29,7 +29,7 @@ class StudentController extends Controller
         ];
         $student = Student::create($input);
         $data = [
-            'message' => 'Student telag di tambahkan',
+            'message' => 'Student telah di tambahkan',
             'data' => $student,
         ];
         return response()->json($data, 201);
